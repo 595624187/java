@@ -1,0 +1,20 @@
+1557065278324	Rename method 'getNeighborCount'
+1557066938042	Rename field 'maxRow'
+1557066947258	Rename field 'maxCol'
+1557066952400	Delete element
+1557066955104	Delete element
+1557278107765	Delete element
+1557281531122	Rename package 'GameFrame'
+1557387419833	Delete element
+1557387833238	Rename field 'maxCol'
+1557387850800	Rename field 'maxRow'
+1557387867476	Rename method 'getMaxCol'
+1557387880203	Rename method 'setMaxCol'
+1557387890840	Rename method 'getMaxRow'
+1557388025019	Rename field 'btnOK'
+1557388047995	Rename field 'btnBlock'
+1557388056180	Rename field 'btnStart'
+1557388063382	Rename field 'btnStop'
+1557388069157	Rename field 'btnExit'
+1557388082097	Rename field 'lblRow'
+1557388087895	Rename field 'lblCol'

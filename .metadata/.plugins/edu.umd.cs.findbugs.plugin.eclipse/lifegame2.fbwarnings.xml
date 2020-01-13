@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="1" timestamp="1557391074814" analysisTimestamp="1557391069861" release="">
+  <Project projectName="lifegame2">
+    <Jar>E:\&#25105;&#30340;&#25991;&#26723;\&#22823;&#20108;&#35838;&#31243;&#65288;&#19979;&#65289;\&#36719;&#20214;&#24037;&#31243;&#23454;&#39564;\&#29983;&#21629;&#28216;&#25103;DEMO\lifegame2\bin</Jar>
+    <AuxClasspathEntry>E:\&#25105;&#30340;&#25991;&#26723;\&#22823;&#20108;&#35838;&#31243;&#65288;&#19979;&#65289;\&#36719;&#20214;&#24037;&#31243;&#23454;&#39564;\&#29983;&#21629;&#28216;&#25103;DEMO\lifegame2\bin</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Program Files\Java\jre1.8.0_201\lib\rt.jar</AuxClasspathEntry>
+    <SrcDir>E:\&#25105;&#30340;&#25991;&#26723;\&#22823;&#20108;&#35838;&#31243;&#65288;&#19979;&#65289;\&#36719;&#20214;&#24037;&#31243;&#23454;&#39564;\&#29983;&#21629;&#28216;&#25103;DEMO\lifegame2\src</SrcDir>
+    <Cloud id="edu.umd.cs.findbugs.cloud.doNothingCloud" online="false"></Cloud>
+  </Project>
+  <BugInstance type="SC_START_IN_CTOR" priority="2" rank="14" abbrev="SC" category="MT_CORRECTNESS" first="1">
+    <Class classname="lifegame2.LifeGame">
+      <SourceLine classname="lifegame2.LifeGame" sourcefile="LifeGame.java" sourcepath="lifegame2/LifeGame.java"/>
+    </Class>
+    <Method classname="lifegame2.LifeGame" name="&lt;init&gt;" signature="(II)V" isStatic="false">
+      <SourceLine classname="lifegame2.LifeGame" start="17" end="22" startBytecode="0" endBytecode="118" sourcefile="LifeGame.java" sourcepath="lifegame2/LifeGame.java"/>
+    </Method>
+    <Method classname="java.lang.Thread" name="start" signature="()V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.lang.Thread"/>
+    </Method>
+    <SourceLine classname="lifegame2.LifeGame" start="20" end="20" startBytecode="28" endBytecode="28" sourcefile="LifeGame.java" sourcepath="lifegame2/LifeGame.java"/>
+    <SourceLine classname="lifegame2.LifeGame" start="20" end="20" startBytecode="28" endBytecode="28" sourcefile="LifeGame.java" sourcepath="lifegame2/LifeGame.java"/>
+  </BugInstance>
+  <BugInstance type="IS2_INCONSISTENT_SYNC" priority="2" rank="17" abbrev="IS" category="MT_CORRECTNESS" first="1">
+    <Class classname="lifegame2.World">
+      <SourceLine classname="lifegame2.World" sourcefile="World.java" sourcepath="lifegame2/World.java"/>
+    </Class>
+    <Field classname="lifegame2.World" name="currentGeneration" signature="[[Llifegame2/World$CellStatus;" isStatic="false">
+      <SourceLine classname="lifegame2.World" sourcefile="World.java" sourcepath="lifegame2/World.java"/>
+    </Field>
+    <Int value="92" role="INT_SYNC_PERCENT"/>
+    <SourceLine classname="lifegame2.World" start="97" end="97" startBytecode="16" endBytecode="16" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_UNSYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="161" end="161" startBytecode="16" endBytecode="16" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="166" end="166" startBytecode="48" endBytecode="48" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="171" end="171" startBytecode="80" endBytecode="80" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="176" end="176" startBytecode="112" endBytecode="112" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="181" end="181" startBytecode="144" endBytecode="144" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="186" end="186" startBytecode="176" endBytecode="176" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="191" end="191" startBytecode="208" endBytecode="208" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="196" end="196" startBytecode="240" endBytecode="240" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="207" end="207" startBytecode="290" endBytecode="290" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="137" end="137" startBytecode="67" endBytecode="67" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="147" end="147" startBytecode="127" endBytecode="127" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="73" end="73" startBytecode="76" endBytecode="76" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+    <SourceLine classname="lifegame2.World" start="74" end="74" startBytecode="85" endBytecode="85" sourcefile="World.java" sourcepath="lifegame2/World.java" role="SOURCE_LINE_SYNC_ACCESS"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Thu, 9 May 2019 16:12:49 +0800" total_classes="6" referenced_classes="329" total_bugs="2" total_size="304" num_packages="1" java_version="1.8.0_201" vm_version="25.201-b09" cpu_seconds="16.30" clock_seconds="4.95" peak_mbytes="504.58" alloc_mbytes="1024.00" gc_seconds="0.19" priority_2="2">
+    <PackageStats package="lifegame2" total_bugs="2" total_types="6" total_size="304" priority_2="2">
+      <ClassStats class="lifegame2.LifeGame" sourceFile="LifeGame.java" interface="false" size="31" bugs="1" priority_2="1"/>
+      <ClassStats class="lifegame2.LifeGame$ArrowActionListener" sourceFile="LifeGame.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="lifegame2.LifeGame$SquareActionListener" sourceFile="LifeGame.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="lifegame2.LifeGame$TestActionListener" sourceFile="LifeGame.java" interface="false" size="7" bugs="0"/>
+      <ClassStats class="lifegame2.World" sourceFile="World.java" interface="false" size="240" bugs="1" priority_2="1"/>
+      <ClassStats class="lifegame2.World$CellStatus" sourceFile="World.java" interface="false" size="12" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="627" invocations="1576" avgMicrosecondsPerInvocation="398" maxMicrosecondsPerInvocation="101744" standardDeviationMircosecondsPerInvocation="4727"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="600" invocations="1573" avgMicrosecondsPerInvocation="381" maxMicrosecondsPerInvocation="39653" standardDeviationMircosecondsPerInvocation="1506"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="506" invocations="329" avgMicrosecondsPerInvocation="1538" maxMicrosecondsPerInvocation="52683" standardDeviationMircosecondsPerInvocation="3904"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="456" invocations="329" avgMicrosecondsPerInvocation="1388" maxMicrosecondsPerInvocation="37598" standardDeviationMircosecondsPerInvocation="3140"/>
+      <ClassProfile name="de.tobject.findbugs.builder.FindBugs2Eclipse" totalMilliseconds="449" invocations="2" avgMicrosecondsPerInvocation="224978" maxMicrosecondsPerInvocation="238748" standardDeviationMircosecondsPerInvocation="13762"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="322" invocations="758" avgMicrosecondsPerInvocation="425" maxMicrosecondsPerInvocation="60038" standardDeviationMircosecondsPerInvocation="2218"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="132" invocations="329" avgMicrosecondsPerInvocation="403" maxMicrosecondsPerInvocation="19137" standardDeviationMircosecondsPerInvocation="1208"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.ExplicitSerialization" totalMilliseconds="119" invocations="329" avgMicrosecondsPerInvocation="362" maxMicrosecondsPerInvocation="29082" standardDeviationMircosecondsPerInvocation="2250"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="104" invocations="329" avgMicrosecondsPerInvocation="317" maxMicrosecondsPerInvocation="25439" standardDeviationMircosecondsPerInvocation="1444"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="93" invocations="23" avgMicrosecondsPerInvocation="4081" maxMicrosecondsPerInvocation="59607" standardDeviationMircosecondsPerInvocation="12102"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="87" invocations="23" avgMicrosecondsPerInvocation="3819" maxMicrosecondsPerInvocation="60565" standardDeviationMircosecondsPerInvocation="12298"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="85" invocations="329" avgMicrosecondsPerInvocation="260" maxMicrosecondsPerInvocation="7393" standardDeviationMircosecondsPerInvocation="645"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="81" invocations="388" avgMicrosecondsPerInvocation="210" maxMicrosecondsPerInvocation="19347" standardDeviationMircosecondsPerInvocation="1013"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="75" invocations="329" avgMicrosecondsPerInvocation="229" maxMicrosecondsPerInvocation="3477" standardDeviationMircosecondsPerInvocation="450"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History>
+    <AppVersion sequence="0" timestamp="1557391074812" release="" codeSize="0" numClasses="0"/>
+  </History>
+</BugCollection>

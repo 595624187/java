@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+E:\java\javafile\getArea\.metadata\.plugins\org.eclipse.jdt.core
+3352527287.index
+649620449.index
+654141698.index
+1901201092.index

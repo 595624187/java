@@ -1,0 +1,188 @@
+package GameFrame;
+ 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Arrays;
+ 
+
+public class GameFrame extends JFrame implements ActionListener {
+     static GameFrame frame;
+     JPanel bPanel, cPanel, btPanel;
+     JButton OK, Start, Stop, Exit;
+     JButton[][] Block;
+     JLabel LabelRow, LabelCol;
+     JComboBox rowList, colList;
+     boolean[][] isSelected;
+     int Row, Col;
+     Life life;
+     boolean isRunning;
+     Thread thread;
+     boolean isDead;
+ 
+    public int getMaxRow() { return Row;}
+ 
+    public void setRow(int maxRow) { this.Row = maxRow;}
+ 
+    public int getMaxCol() {return Col;}
+ 
+    public void setCol(int maxCol) {this.Col = maxCol;}
+    
+    public static void main(String arg[]) {
+        frame = new GameFrame("生命游戏之适者生存");
+    }
+    public void initGUI() {
+        if(Row==0||Col==0) {
+        	 Row = 20;
+        	 Col = 30;
+             life = new Life(Row, Col);
+        }
+        bPanel = new JPanel(new BorderLayout());
+        cPanel = new JPanel(new GridLayout(Row, Col));
+        btPanel = new JPanel();
+        rowList = new JComboBox();
+        for (int i = 3; i <= 20; i++) {
+            rowList.addItem(String.valueOf(i));
+        }
+        colList = new JComboBox();
+        for (int i = 3; i <= 60; i++) {
+            colList.addItem(String.valueOf(i));
+        }
+        rowList.setSelectedIndex(Row - 3);
+        colList.setSelectedIndex(Col - 3);
+        OK = new JButton("确定");
+        Block = new JButton[Row][Col];
+        Start = new JButton("开始游戏");
+        Stop = new JButton("游戏暂停");
+        Exit = new JButton("退出游戏");
+        isSelected = new boolean[Row][Col];
+        LabelRow = new JLabel("设置行数：");
+        LabelCol = new JLabel("设置列数：");
+        this.setContentPane(bPanel);
+        bPanel.add(cPanel, "Center");
+        bPanel.add(btPanel, "South");
+ 
+        for (int i = 0; i < Row; i++) {
+            for (int j = 0; j < Col; j++) {
+                Block[i][j] = new JButton("");
+                Block[i][j].setBackground(Color.WHITE);
+                cPanel.add(Block[i][j]);
+            }
+        }
+        btPanel.add(LabelRow);
+        btPanel.add(rowList);
+        btPanel.add(LabelCol);
+        btPanel.add(colList);
+        btPanel.add(OK);
+        btPanel.add(Start);
+        btPanel.add(Stop);
+        btPanel.add(Exit);
+        this.setSize(900, 620);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+        this.addWindowListener(new WindowAdapter() {
+            public void windowClosed(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        OK.addActionListener(this);
+        Start.addActionListener(this);
+        Stop.addActionListener(this);
+        Exit.addActionListener(this);
+        for (int i = 0; i < Row; i++) {
+            for (int j = 0; j < Col; j++) {
+                Block[i][j].addActionListener(this);
+            }
+        }
+    }
+ 
+    public GameFrame(String name) {
+        super(name);
+        initGUI();
+    }
+ 
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == OK) {
+            frame.setRow(rowList.getSelectedIndex() + 3);
+            frame.setCol(colList.getSelectedIndex() + 3);
+            initGUI();
+            life = new Life(getMaxRow(), getMaxCol());
+        }  else if (e.getSource() == Start) {
+            isRunning = true;
+            thread = new Thread(new Runnable() {
+                public void run() {
+                    while (isRunning) {
+                        makeNextGeneration();
+                        boolean isSame = true;
+                        try {
+                            Thread.sleep(500);
+                        } catch (InterruptedException e1) {
+                            e1.printStackTrace();
+                        }
+                        isDead = true;
+                        for(int row = 1; row <= Row; row++) {
+                            for (int col = 1; col <= Col; col++) {
+                                if (life.getGrid()[row][col] != 0) {
+                                    isDead = false;
+                                    break;
+                                }
+                            }
+                            if (!isDead) break;
+                        }
+                        if (isDead) {
+                            JOptionPane.showMessageDialog(null, "生命消失了~");
+                            isRunning = false;
+                            thread = null;
+                        }
+                    }
+                }
+            });
+            thread.start();
+        } else if (e.getSource() == Stop) {
+            isRunning = false;
+            thread = null;
+        } else if (e.getSource() == Exit) {
+            System.exit(0);
+        } else {
+            int[][] grid = life.getGrid();
+            for (int i = 0; i < Row; i++) {
+                for (int j = 0; j < Col; j++) {
+                    if (e.getSource() == Block[i][j]) {
+                        isSelected[i][j] = !isSelected[i][j];
+                        if (isSelected[i][j]) {
+                        	if(Block[i][j].getBackground()==Color.WHITE) {
+                            Block[i][j].setBackground(Color.BLACK);
+                            grid[i + 1][j + 1] = 1;
+                        	}
+                        } else {
+                        	if(Block[i][j].getBackground()==Color.BLACK) {
+                            Block[i][j].setBackground(Color.WHITE);
+                            grid[i + 1][j + 1] = 0;
+                        	}
+                        }
+                        break;
+                    }
+                }
+            }
+            life.setGrid(grid);
+        }
+    }
+ 
+    private void makeNextGeneration() {
+        life.changeCellstatus();
+        int[][] grid = life.getGrid();
+        for (int i = 0; i < Row; i++) {
+            for (int j = 0; j < Col; j++) {
+                if (grid[i + 1][j + 1] == 1) {
+                    Block[i][j].setBackground(Color.BLACK);
+                } else {
+                    Block[i][j].setBackground(Color.WHITE);
+                }
+            }
+        }
+    }
+}
